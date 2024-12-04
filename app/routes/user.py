@@ -10,8 +10,8 @@ def list_users(db: Session = Depends(database.get_db)):
     return crud.get_all_users(db)
 
 @router.post("/", response_model=schemas.UserOut)
-def create_new_user(user: schemas.UserCreate, db: Session = Depends(database.get_db)):
-    return crud.create_user(db, user)
+def create_new_user(username:str, password:str, email:str, db:Session = Depends(database.get_db)):
+    return crud.create_user(db, username, password, email)
 
 
 @router.get("/{user_id}", response_model=schemas.UserOut)

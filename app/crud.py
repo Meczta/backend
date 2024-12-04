@@ -10,11 +10,11 @@ def get_all_users(db: Session):
     return db.query(User).filter(User.is_deleted == False).all()
 
 
-def create_user(db: Session, user: UserCreate):
+def create_user(db: Session, username, password, email):
     db_user = User(
-        username=user.username,
-        email=user.email,
-        password=user.password, 
+        username=username,
+        email=email,
+        password=password,
         is_deleted=False
     )
     db.add(db_user)
